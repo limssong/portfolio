@@ -233,25 +233,29 @@ function App() {
   // ]
 
   
-  const PortfolioCard = ({portfolioData}) => {
-    return (
-      제작중
-      // <li class="portfolio-card">
-      //   <a href={portfolioData.url} alt={portfolioData.title} target={portfolioData.target}>
-      //     <div class="portfolio-thumb"><img src={portfolioData.imgUrl} alt="대표이미지" /></div>
-      //     <div class="portfolio-info">
-      //       <div class="portfolio-title">{portfolioData.title}</div>
-      //       <div class="portfolio-desc">{portfolioData.desc}</div>
-      //       <div class="portfolio-skill">{portfolioData.skill}</div>
-      //     </div>
-      //   </a>
-      // </li>
-    )
-  }
+  // const PortfolioCard = ({portfolioData}) => {
+  //   return (
+  //     <li class="portfolio-card">
+  //       <a href={portfolioData.url} alt={portfolioData.title} target={portfolioData.target}>
+  //         <div class="portfolio-thumb"><img src={portfolioData.imgUrl} alt="대표이미지" /></div>
+  //         <div class="portfolio-info">
+  //           <div class="portfolio-title">{portfolioData.title}</div>
+  //           <div class="portfolio-desc">{portfolioData.desc}</div>
+  //           <div class="portfolio-skill">{portfolioData.skill}</div>
+  //         </div>
+  //       </a>
+  //     </li>
+  //   )
+  // }
 
 
   return (
     <div className="App">
+
+      
+      <div>제작중 </div>
+
+
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -268,11 +272,13 @@ function App() {
       </header> */}
 
       {/* <Portfoliolist portfolioData={portfolioData}></Portfoliolist> */}
-      <div class="portfolio-wrap">
+
+      
+      {/* <div class="portfolio-wrap">
         <ul>
         {portfolioData.map(data => <PortfolioCard portfolioData={data}></PortfolioCard>)}  
         </ul>
-      </div>
+      </div> */}
     </div>
   );
 }
