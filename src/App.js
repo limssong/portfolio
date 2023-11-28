@@ -254,7 +254,7 @@ function App() {
     <div className="App">
 
       
-      <div>제작중 </div>
+      <div>ReactJs로 제작중</div>
 
 
       {/* <header className="App-header">
