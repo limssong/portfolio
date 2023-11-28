@@ -4,7 +4,7 @@ import FetchData from './pages/FatchData';
 // import Portfoliolist from './pages/Portfoliolist';
 
 function App() {
-  // window.location.href = 'https://limssong.github.io/portfolio1/';
+  window.location.href = 'https://limssong.github.io/portfolio1/';
 
   // const portfolioData = [
   //   {
@@ -254,7 +254,7 @@ function App() {
     <div className="App">
 
       
-      {/* <div>제작중 </div> */}
+      <div>제작중 </div>
 
 
       {/* <header className="App-header">
@@ -277,7 +277,7 @@ function App() {
         {portfolioData.map(data => <PortfolioCard portfolioData={data}></PortfolioCard>)}  
         </ul>
       </div> */}
-      <FetchData></FetchData>
+      {/* <FetchData></FetchData> */}
     </div>
   );
 }
