@@ -1,10 +1,12 @@
 import Cardlayout from "./Cardlayout"
 
 const Portfoliolist = (props) => {
-  const portfolioData = props
+  const portfolioData = props.datas
   return (
     <div class="portfolio-wrap">
-      <Cardlayout portfolioData={portfolioData}></Cardlayout>
+      <ul>
+        {portfolioData.map(data => <Cardlayout datas={data}></Cardlayout>)}  
+      </ul>
     </div>
   )
 }
