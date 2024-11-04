@@ -1,7 +1,7 @@
 import Cardlayout from "./Cardlayout"
 
 const Portfoliolist = (props) => {
-  const portfolioData = props.datas || [];
+  const portfolioData = props.datas
   return (
     <div class="portfolio-wrap">
       <ul>
