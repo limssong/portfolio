@@ -5,7 +5,9 @@ const Portfoliolist = (props) => {
   return (
     <div class="portfolio-wrap">
       <ul>
-        {portfolioData.map(data => <Cardlayout datas={data}></Cardlayout>)}  
+        {portfolioData && portfolioData.map((data, index) => (
+          <Cardlayout key={index} datas={data} />
+        ))}
       </ul>
     </div>
   )
