@@ -8,7 +8,7 @@ const Cardlayout = (props) => {
           <div class="portfolio-title">{portfolioData.title}</div>
           <div class="portfolio-desc">{portfolioData.desc}</div>
           <div class="portfolio-skill ass">{portfolioData.skill}</div>
-          <div class="portfolio-date">{portfolioData.date ? portfolioData.date : '-'}</div>
+          <div class="portfolio-date">{portfolioData.date}</div>
         </div>
       </a>
     </li>
