@@ -1,100 +1,937 @@
-html {
-  font-size:3.13vmin;
+/* 개발자스러운 포트폴리오 UI 스타일 */
+
+/* CSS 변수 정의 */
+:root {
+  --primary-color: #00d4ff;
+  --secondary-color: #0099cc;
+  --accent-color: #ff6b6b;
+  --bg-dark: #0a0a0a;
+  --bg-darker: #050505;
+  --bg-light: #1a1a1a;
+  --text-primary: #ffffff;
+  --text-secondary: #b0b0b0;
+  --text-muted: #666666;
+  --border-color: #333333;
+  --border-light: #444444;
+  --shadow-dark: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --shadow-light: 0 4px 16px rgba(0, 0, 0, 0.2);
+  --gradient-primary: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+  --gradient-secondary: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+  --font-mono: 'Fira Code', 'Monaco', 'Consolas', monospace;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  
+  /* 반응형 브레이크포인트 */
+  --container-max-width: 1200px;
+  --container-padding: 2rem;
 }
+
+/* 기본 스타일 리셋 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px; /* 기본 폰트 크기 */
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg-dark);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* 앱 컨테이너 */
 .App {
-  font-size:0.7rem;
+  min-height: 100vh;
+  background: var(--bg-dark);
+}
+
+/* 헤더 스타일 */
+.app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-color);
+  z-index: 1000;
+  padding: 1rem 0;
+}
+
+.nav-container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.brand-logo {
+  width: 40px;
+  height: 40px;
+  background: var(--gradient-primary);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--bg-dark);
+}
+
+.brand-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--primary-color);
+  background: rgba(0, 212, 255, 0.1);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--primary-color);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* 모바일 메뉴 토글 버튼 */
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 1001;
+}
+
+.mobile-menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background: var(--primary-color);
+  margin: 3px 0;
+  transition: 0.3s;
+  border-radius: 2px;
+}
+
+/* 모바일 메뉴 토글 애니메이션 */
+.mobile-menu-toggle .rotate-45 {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.mobile-menu-toggle .opacity-0 {
+  opacity: 0;
+}
+
+.mobile-menu-toggle .rotate-negative-45 {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* 모바일 메뉴 스타일 */
+@media (max-width: 768px) {
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(10, 10, 10, 0.98);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+  }
+  
+  .nav-menu.mobile-open {
+    transform: translateX(0);
+  }
+  
+  .nav-link {
+    font-size: 1.5rem;
+    padding: 1rem 2rem;
+  }
+  
+  .mobile-menu-toggle {
+    display: flex;
+  }
+}
+
+/* 메인 콘텐츠 */
+.main-content {
+  margin-top: 80px;
+  min-height: calc(100vh - 80px);
+}
+
+/* 히어로 섹션 */
+.hero-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem var(--container-padding);
+  background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-darker) 100%);
+  position: relative;
   text-align: center;
 }
 
-
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23333" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+  opacity: 0.05;
 }
 
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+  color: var(--text-secondary);
+  margin-bottom: 2.5rem;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* 스킬 비율 표시 */
+.skill-ratio {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ratio-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ratio-label {
+  min-width: 140px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  text-align: left;
+}
+
+.ratio-bar {
+  flex: 1;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.ratio-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 1.5s ease;
+  position: relative;
+}
+
+.ratio-fill.publisher {
+  background: var(--gradient-primary);
+}
+
+.ratio-fill.developer {
+  background: var(--gradient-secondary);
+}
+
+.ratio-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.ratio-percent {
+  min-width: 40px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  text-align: right;
+  font-family: var(--font-mono);
+}
+
+.hero-cta {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.cta-button {
+  padding: clamp(1rem, 2.5vw, 1.2rem) clamp(2rem, 4vw, 2.5rem);
+  border: none;
+  border-radius: 8px;
+  font-size: clamp(1rem, 2.5vw, 1.1rem);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cta-button.primary {
+  background: var(--gradient-primary);
+  color: var(--bg-dark);
+  box-shadow: var(--shadow-dark);
+}
+
+.cta-button.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0, 212, 255, 0.4);
+}
+
+.cta-button.secondary {
+  background: transparent;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+}
+
+.cta-button.secondary:hover {
+  background: var(--primary-color);
+  color: var(--bg-dark);
+  transform: translateY(-2px);
+}
+
+/* 섹션 공통 스타일 */
+.portfolio-section,
+.skills-section {
+  padding: clamp(4rem, 8vw, 6rem) var(--container-padding);
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: clamp(3rem, 6vw, 4rem);
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-subtitle {
+  font-size: clamp(1rem, 2vw, 1.1rem);
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* 포트폴리오 스타일 */
 .portfolio-wrap {
-  padding:0.5rem;
+  padding: 0;
 }
+
 .portfolio-wrap ul {
-  display:flex;
-  flex-wrap:wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: clamp(1.5rem, 3vw, 2rem);
+  list-style: none;
 }
 
 .portfolio-card {
-  width:12rem;
-  margin:1rem;
-  border:1px solid #333333;
-  border-radius:0.5rem;
-  overflow:hidden;
+  background: var(--bg-light);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-light);
+}
+
+.portfolio-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-dark);
+  border-color: var(--primary-color);
 }
 
 .portfolio-card a {
-  text-decoration:none;
+  text-decoration: none;
+  color: inherit;
+  display: block;
 }
 
 .portfolio-thumb {
-  position:relative;
-  width:100%;
-  height:5rem;
-  border-bottom:1px solid #333333;
-  overflow:hidden;
+  position: relative;
+  width: 100%;
+  height: clamp(180px, 25vw, 200px);
+  overflow: hidden;
+  background: var(--bg-darker);
 }
 
-.portfolio-thumb img { 
-  position:absolute;
-  top:50%; 
-  left:50%;
-  width:100%; 
-  transform:translate(-50%,-50%);
+.portfolio-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
 }
+
+.portfolio-card:hover .portfolio-thumb img {
+  transform: scale(1.05);
+}
+
 .portfolio-info {
-  padding:0.5rem;
+  padding: clamp(1.2rem, 2.5vw, 1.5rem);
 }
 
 .portfolio-title {
-  font-size:1rem;
-  font-weight:bold;
+  font-size: clamp(1.1rem, 2.5vw, 1.2rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
 }
 
 .portfolio-desc {
-  margin-top:0.5rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  line-height: 1.5;
+  font-size: clamp(0.9rem, 2vw, 1rem);
 }
+
 .portfolio-skill {
-  margin-top:0.5rem;
-  font-size:0.6rem;
-}
-.portfolio-date {
-  margin-top:0.5rem;
-  font-size:0.6rem;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.skill-badge {
+  background: var(--gradient-primary);
+  color: var(--bg-dark);
+  padding: clamp(0.25rem, 1vw, 0.3rem) clamp(0.6rem, 1.5vw, 0.8rem);
+  border-radius: 15px;
+  font-size: clamp(0.75rem, 1.8vw, 0.8rem);
+  font-weight: 500;
+  font-family: var(--font-mono);
+  transition: all 0.3s ease;
+}
+
+.skill-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-light);
+}
+
+.portfolio-date {
+  color: var(--text-secondary);
+  font-size: clamp(0.8rem, 1.8vw, 0.9rem);
+  font-family: var(--font-mono);
+}
+
+.portfolio-date::before {
+  content: '📅 ';
+  margin-right: 0.5rem;
+}
+
+/* 스킬 섹션 */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(1.5rem, 3vw, 2rem);
+}
+
+.skill-category {
+  background: var(--bg-light);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: clamp(1.5rem, 3vw, 2rem);
+  transition: all 0.3s ease;
+}
+
+.skill-category:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary-color);
+  box-shadow: var(--shadow-dark);
+}
+
+/* 주요 스킬 카테고리 스타일 */
+.skill-category.primary {
+  border-color: var(--primary-color);
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.05) 0%, rgba(0, 153, 204, 0.05) 100%);
+  position: relative;
+}
+
+.skill-category.primary::before {
+  content: '⭐';
+  position: absolute;
+  top: -10px;
+  right: 20px;
+  font-size: 1.5rem;
+  background: var(--bg-dark);
+  padding: 0 10px;
+}
+
+.skill-category.secondary {
+  border-color: var(--accent-color);
+  background: linear-gradient(135deg, rgba(255, 107, 107, 0.05) 0%, rgba(238, 90, 36, 0.05) 100%);
+}
+
+.skill-title {
+  font-size: clamp(1.2rem, 2.5vw, 1.3rem);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.skill-category.primary .skill-title {
+  color: var(--primary-color);
+}
+
+.skill-category.secondary .skill-title {
+  color: var(--accent-color);
+}
+
+.skill-category:not(.primary):not(.secondary) .skill-title {
+  color: var(--text-secondary);
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(0.6rem, 1.5vw, 0.8rem);
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.skill-tag {
+  background: var(--gradient-primary);
+  color: var(--bg-dark);
+  padding: clamp(0.4rem, 1vw, 0.5rem) clamp(0.8rem, 1.5vw, 1rem);
+  border-radius: 20px;
+  font-size: clamp(0.8rem, 1.8vw, 0.9rem);
+  font-weight: 500;
+  transition: all 0.3s ease;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.skill-tag:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-light);
+}
+
+/* 푸터 */
+.app-footer {
+  background: var(--bg-darker);
+  border-top: 1px solid var(--border-color);
+  padding: clamp(2rem, 4vw, 3rem) var(--container-padding) 1rem;
+  margin-top: 4rem;
+}
+
+.footer-content {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-logo {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+
+.footer-text {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.footer-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.footer-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+  color: var(--primary-color);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-muted);
+}
+
+/* 반응형 디자인 - 태블릿 */
+@media (max-width: 1024px) {
+  :root {
+    --container-padding: 1.5rem;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .hero-content {
+    gap: 3rem;
+  }
+  
+  .skill-ratio {
+    max-width: 450px;
+  }
+  
+  .portfolio-wrap ul {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+  
+  .skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+/* 반응형 디자인 - 태블릿 세로 */
+@media (max-width: 768px) {
+  :root {
+    --container-padding: 1rem;
+  }
+  
+  .nav-container {
+    padding: 0 1rem;
+  }
+  
+  .nav-menu {
+    display: none;
+  }
+  
+  .mobile-menu-toggle {
+    display: flex;
+  }
+  
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+  
+  .hero-title {
+    font-size: clamp(2rem, 6vw, 2.5rem);
+  }
+  
+  .skill-ratio {
+    max-width: 100%;
+    margin: 0 1rem 2rem 1rem;
+  }
+  
+  .ratio-item {
+    flex-direction: column;
+    gap: 0.8rem;
+    text-align: center;
+  }
+  
+  .ratio-label {
+    min-width: auto;
+    text-align: center;
+  }
+  
+  .ratio-bar {
+    width: 100%;
+  }
+  
+  .ratio-percent {
+    min-width: auto;
+    text-align: center;
+  }
+  
+  .hero-cta {
+    justify-content: center;
+  }
+  
+  .portfolio-wrap ul {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .footer-content {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+  
+  .footer-links {
+    justify-content: center;
+  }
+}
+
+/* 반응형 디자인 - 모바일 */
+@media (max-width: 480px) {
+  :root {
+    --container-padding: 0.8rem;
+  }
+  
+  .hero-section,
+  .portfolio-section,
+  .skills-section {
+    padding: clamp(2rem, 5vw, 3rem) 0.8rem;
+  }
+  
+  .hero-title {
+    font-size: clamp(1.8rem, 7vw, 2rem);
+  }
+  
+  .section-title {
+    font-size: clamp(1.8rem, 6vw, 2rem);
+  }
+  
+  .hero-cta {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .cta-button {
+    width: 100%;
+    max-width: 280px;
+  }
+  
+  .portfolio-card {
+    margin: 0 0.5rem;
+  }
+  
+  .portfolio-info {
+    padding: 1rem;
+  }
+  
+  .skill-category {
+    padding: 1.5rem;
+  }
+  
+  .skill-tags {
+    gap: 0.5rem;
+  }
+  
+  .skill-tag {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* 반응형 디자인 - 작은 모바일 */
+@media (max-width: 360px) {
+  :root {
+    --container-padding: 0.5rem;
+  }
+  
+  .hero-section,
+  .portfolio-section,
+  .skills-section {
+    padding: 2rem 0.5rem;
+  }
+  
+  .hero-title {
+    font-size: 1.6rem;
+  }
+  
+  .section-title {
+    font-size: 1.6rem;
+  }
+  
+  .portfolio-wrap ul {
+    gap: 1rem;
+  }
+  
+  .portfolio-card {
+    margin: 0 0.25rem;
+  }
+  
+  .skills-grid {
+    gap: 1rem;
+  }
+}
+
+/* 반응형 디자인 - 가로 모드 */
+@media (orientation: landscape) and (max-height: 600px) {
+  .hero-section {
+    min-height: 100vh;
+    padding: 2rem var(--container-padding);
+  }
+  
+  .hero-content {
+    gap: 2rem;
+  }
+  
+  .hero-title {
+    font-size: clamp(2rem, 4vw, 2.5rem);
+  }
+  
+  .hero-subtitle {
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    margin-bottom: 1rem;
+  }
+  
+  .hero-cta {
+    margin-bottom: 1rem;
+  }
+}
+
+/* 접근성 개선 */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .hero-section::before {
+    display: none;
+  }
+}
+
+/* 고대비 모드 지원 */
+@media (prefers-contrast: high) {
+  :root {
+    --border-color: #ffffff;
+    --text-secondary: #ffffff;
+    --text-muted: #cccccc;
+  }
+}
+
+/* 스크롤바 스타일 */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color);
+}
+
+/* 선택 텍스트 스타일 */
+::selection {
+  background: var(--primary-color);
+  color: var(--bg-dark);
+}
+
+/* 포커스 스타일 */
+button:focus,
+a:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* 터치 디바이스 최적화 */
+@media (hover: none) and (pointer: coarse) {
+  .portfolio-card:hover {
+    transform: none;
+  }
+  
+  .skill-category:hover {
+    transform: none;
+  }
+  
+  .cta-button:hover {
+    transform: none;
   }
 }

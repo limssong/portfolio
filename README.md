@@ -1,4 +1,4 @@
-# 🚀 Limssong's Portfolio
+# 🚀 limssong's Portfolio
 
 개발자 임송희의 포트폴리오 웹사이트입니다. 
 React를 사용하여 구축되었으며, GitHub Pages를 통해 배포됩니다.
