@@ -127,16 +127,16 @@ function App() {
               <div className="ratio-item">
                 <span className="ratio-label">Web Publisher</span>
                 <div className="ratio-bar">
-                  <div className="ratio-fill publisher" style={{width: '80%'}}></div>
+                  <div className="ratio-fill publisher" style={{width: '70%'}}></div>
                 </div>
-                <span className="ratio-percent">80%</span>
+                <span className="ratio-percent">70%</span>
               </div>
               <div className="ratio-item">
                 <span className="ratio-label">Frontend Developer</span>
                 <div className="ratio-bar">
-                  <div className="ratio-fill developer" style={{width: '20%'}}></div>
+                  <div className="ratio-fill developer" style={{width: '30%'}}></div>
                 </div>
-                <span className="ratio-percent">20%</span>
+                <span className="ratio-percent">30%</span>
               </div>
             </div>
             <div className="hero-cta">
