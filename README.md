@@ -1,70 +1,136 @@
-# Getting Started with Create React App
+# 🚀 Limssong's Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+개발자 임송희의 포트폴리오 웹사이트입니다. 
+React를 사용하여 구축되었으며, GitHub Pages를 통해 배포됩니다.
 
-## Available Scripts
+## ✨ 주요 기능
 
-In the project directory, you can run:
+- **포트폴리오 프로젝트 전시**: 다양한 개발 프로젝트를 카드 형태로 표시
+- **동적 데이터 로딩**: 외부 JSON 파일에서 포트폴리오 정보를 가져와 동적으로 표시
+- **반응형 디자인**: 모바일과 데스크톱 환경에 최적화된 UI
 
-### `npm start`
+## 🛠️ 기술 스택
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Frontend**: React 18.2.0
+- **HTTP Client**: Axios
+- **배포**: GitHub Pages
+- **언어**: JavaScript (ES6+)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 📁 프로젝트 구조
 
-### `npm test`
+```
+src/
+├── components/
+│   └── AdSense.jsx          # Google AdSense 광고 컴포넌트
+├── config/
+│   └── adsense.js           # AdSense 설정 파일
+├── pages/
+│   ├── FatchData.jsx        # 포트폴리오 데이터 가져오기
+│   ├── Portfoliolist.jsx    # 포트폴리오 목록 컴포넌트
+│   └── Cardlayout.jsx       # 포트폴리오 카드 레이아웃
+├── App.js                   # 메인 애플리케이션 컴포넌트
+└── App.css                  # 스타일시트
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🚀 시작하기
 
-### `npm run build`
+### 필수 요구사항
+- Node.js (v14 이상)
+- npm 또는 yarn
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 설치 및 실행
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. **저장소 클론**
+   ```bash
+   git clone https://github.com/limssong/portfolio.git
+   cd portfolio
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. **의존성 설치**
+   ```bash
+   npm install
+   ```
 
-### `npm run eject`
+3. **개발 서버 실행**
+   ```bash
+   npm start
+   ```
+   브라우저에서 [http://localhost:3000](http://localhost:3000)으로 접속
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+4. **프로덕션 빌드**
+   ```bash
+   npm run build
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🌐 배포
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+이 프로젝트는 GitHub Pages를 통해 자동으로 배포됩니다.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- **배포 URL**: [https://limssong.github.io/portfolio/](https://limssong.github.io/portfolio/)
+- **배포 명령어**: `npm run deploy`
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 📝 포트폴리오 데이터 구조
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+외부 JSON 파일에서 포트폴리오 정보를 가져옵니다:
 
-### Code Splitting
+```json
+{
+  "myPortfolio": [
+    {
+      "title": "프로젝트 제목",
+      "desc": "프로젝트 설명",
+      "skill": "사용 기술",
+      "date": "개발 기간",
+      "url": "프로젝트 링크",
+      "target": "_blank",
+      "imgUrl": "썸네일 이미지 URL"
+    }
+  ]
+}
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 🔧 개발 환경 설정
 
-### Analyzing the Bundle Size
+### ESLint 설정
+- React App 기본 ESLint 규칙 사용
+- 코드 품질 및 일관성 유지
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### 브라우저 지원
+- Chrome (최신 버전)
+- Firefox (최신 버전)
+- Safari (최신 버전)
+- Edge (최신 버전)
 
-### Making a Progressive Web App
+## 📱 반응형 디자인
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- **모바일 우선**: 모바일 환경에 최적화된 UI
+- **그리드 시스템**: CSS Grid를 활용한 유연한 레이아웃
+- **미디어 쿼리**: 다양한 화면 크기에 대응
 
-### Advanced Configuration
+## 🚀 성능 최적화
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- **React 18**: 최신 React 기능 활용
+- **컴포넌트 분리**: 재사용 가능한 컴포넌트 구조
+- **이미지 최적화**: 적절한 이미지 크기 및 포맷 사용
 
-### Deployment
+## 🤝 기여하기
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-### `npm run build` fails to minify
+## 📄 라이선스
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+이 프로젝트는 MIT 라이선스 하에 배포됩니다.
+
+## 📞 연락처
+
+- **GitHub**: [@limssong](https://github.com/limssong)
+- **포트폴리오**: [https://limssong.github.io/portfolio/](https://limssong.github.io/portfolio/)
+
+---
+
+⭐ 이 프로젝트가 도움이 되었다면 스타를 눌러주세요!
