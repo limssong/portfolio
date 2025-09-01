@@ -174,7 +174,7 @@ function App() {
           </div>
           <div className="skills-grid">
             <div className="skill-category primary">
-              <h3 className="skill-title">Web Publishing (80%)</h3>
+              <h3 className="skill-title">Web Publishing (70%)</h3>
               <div className="skill-tags">
                 <span className="skill-tag">HTML5</span>
                 <span className="skill-tag">CSS3</span>
@@ -185,7 +185,7 @@ function App() {
               </div>
             </div>
             <div className="skill-category secondary">
-              <h3 className="skill-title">Frontend Development (20%)</h3>
+              <h3 className="skill-title">Frontend Development (30%)</h3>
               <div className="skill-tags">
                 <span className="skill-tag">Vue</span>
                 <span className="skill-tag">React</span>
