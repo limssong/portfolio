@@ -197,12 +197,18 @@ function App() {
             <div className="skill-category">
               <h3 className="skill-title">Tools & Others</h3>
               <div className="skill-tags">
-                <span className="skill-tag">Git</span>
+                <span className="skill-tag">Cursor</span>
                 <span className="skill-tag">vsCode</span>
+                <span className="skill-tag">Git</span>
+                <span className="skill-tag">SVN</span>
                 <span className="skill-tag">Figma</span>
-                <span className="skill-tag">JIRA</span>
-                <span className="skill-tag">Notion</span>
+                <span className="skill-tag">Zeplin</span>
+                <span className="skill-tag">XD</span>
                 <span className="skill-tag">Photoshop</span>
+                <span className="skill-tag">JIRA</span>
+                <span className="skill-tag">REDMINE</span>
+                <span className="skill-tag">Confluence</span>
+                <span className="skill-tag">Notion</span>
               </div>
             </div>
           </div>
