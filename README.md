@@ -66,7 +66,7 @@ src/
 
 이 프로젝트는 GitHub Pages를 통해 자동으로 배포됩니다.
 
-- **배포 URL**: [https://limssong.github.io/portfolio/](https://limssong.github.io/portfolio/)
+- **배포 URL**: [https://limssong.github.io/portfolio/]
 - **배포 명령어**: `npm run deploy`
 
 
@@ -129,7 +129,7 @@ src/
 ## 📞 연락처
 
 - **GitHub**: [@limssong](https://github.com/limssong)
-- **포트폴리오**: [https://limssong.github.io/portfolio/](https://limssong.github.io/portfolio/)
+- **포트폴리오**: [https://limssong.github.io/portfolio/]
 
 ---
 
