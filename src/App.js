@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import FetchData from './pages/FatchData';
+import { initGA, trackPageView } from './ga';
 
 function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -9,6 +10,12 @@ function App() {
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
+
+  // Google Analytics 초기화 (처음 한 번만)
+  useEffect(() => {
+    initGA();
+    trackPageView('/');
+  }, []);
 
   // 스크롤 위치에 따라 현재 섹션 감지
   useEffect(() => {
@@ -20,6 +27,7 @@ function App() {
         const section = document.getElementById(sections[i]);
         if (section && section.offsetTop <= scrollPosition) {
           setActiveSection(sections[i]);
+          trackPageView(`#${sections[i]}`);
           break;
         }
       }
