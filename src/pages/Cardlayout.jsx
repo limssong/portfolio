@@ -3,8 +3,7 @@ import useReveal from '../hooks/useReveal'
 const Cardlayout = (props) => {
   const portfolioData = props.datas
   const index = props.index || 0
-  const [headerRef, headerVisible] = useReveal()
-  const [visualRef, visualVisible] = useReveal()
+  const [ref, isVisible] = useReveal()
 
   // 스킬을 배열로 변환하여 처리
   const skills = Array.isArray(portfolioData.skill)
@@ -14,31 +13,32 @@ const Cardlayout = (props) => {
   const order = String(index + 1).padStart(2, '0')
 
   return (
-    <li className="project-feature">
-      <div
-        ref={headerRef}
-        className={`project-feature-header reveal ${headerVisible ? 'reveal-visible' : ''}`}
-      >
-        <span className="project-feature-index">{order}</span>
-        <h3 className="project-feature-title">{portfolioData.title}</h3>
-        <p className="project-feature-desc">{portfolioData.desc}</p>
-        <div className="project-feature-skills">
-          {skills.map((skill, i) => (
-            <span key={i} className="skill-badge">{skill}</span>
-          ))}
-        </div>
-        <span className="project-feature-date">{portfolioData.date}</span>
-      </div>
-
+    <li
+      ref={ref}
+      className={`portfolio-card reveal ${isVisible ? 'reveal-visible' : ''}`}
+      style={{ transitionDelay: `${Math.min(index * 60, 240)}ms` }}
+    >
       <a
-        ref={visualRef}
         href={portfolioData.url}
+        alt={portfolioData.title}
         target={portfolioData.target}
         rel="noreferrer"
-        className={`project-feature-visual reveal ${visualVisible ? 'reveal-visible' : ''}`}
-        style={{ transitionDelay: '120ms' }}
+        data-cursor="view"
       >
-        <img src={portfolioData.imgUrl} alt={portfolioData.title} />
+        <div className="portfolio-thumb">
+          <img src={portfolioData.imgUrl} alt={portfolioData.title} />
+        </div>
+        <div className="portfolio-info">
+          <span className="portfolio-index">{order}</span>
+          <div className="portfolio-title">{portfolioData.title}</div>
+          <div className="portfolio-desc">{portfolioData.desc}</div>
+          <div className="portfolio-skill">
+            {skills.map((skill, i) => (
+              <span key={i} className="skill-badge">{skill}</span>
+            ))}
+          </div>
+          <div className="portfolio-date">{portfolioData.date}</div>
+        </div>
       </a>
     </li>
   );

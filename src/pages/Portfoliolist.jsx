@@ -4,7 +4,7 @@ const Portfoliolist = (props) => {
   const portfolioData = props.datas
   return (
     <div className="portfolio-wrap">
-      <ul className="project-feature-list">
+      <ul className="portfolio-grid">
         {portfolioData.map((data, index) => (
           <Cardlayout key={index} datas={data} index={index} />
         ))}

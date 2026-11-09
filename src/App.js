@@ -2,11 +2,14 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import FetchData from './pages/FatchData';
 import Reveal from './components/Reveal';
+import MagneticButton from './components/MagneticButton';
+import CustomCursor from './components/CustomCursor';
 import { initGA, trackPageView } from './ga';
 
 function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -18,7 +21,7 @@ function App() {
     trackPageView('/');
   }, []);
 
-  // 스크롤 위치에 따라 현재 섹션 감지
+  // 스크롤 위치에 따라 현재 섹션 감지 + 스크롤 진행률 계산
   useEffect(() => {
     const handleScroll = () => {
       const sections = ['home', 'portfolio', 'about', 'contact'];
@@ -32,6 +35,9 @@ function App() {
           break;
         }
       }
+
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      setScrollProgress(scrollHeight > 0 ? window.scrollY / scrollHeight : 0);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -50,14 +56,12 @@ function App() {
 
   return (
     <div className="App">
-      {/* 개발자스러운 헤더 */}
+      <CustomCursor />
+      <div className="scroll-progress" style={{ transform: `scaleX(${scrollProgress})` }}></div>
       <header className="app-header">
         <nav className="nav-container">
           <div className="nav-brand">
-            <div className="brand-logo">
-              <span className="logo-text">&lt;/&gt;</span>
-            </div>
-            <h1 className="brand-title">limssong.dev</h1>
+            <h1 className="brand-title">limssong</h1>
           </div>
           
           {/* 데스크톱 메뉴 */}
@@ -132,29 +136,13 @@ function App() {
             <p className="hero-subtitle">
               HTML5 • CSS3 • SCSS • Vue • JavaScript • React
             </p>
-            <div className="skill-ratio">
-              <div className="ratio-item">
-                <span className="ratio-label">Web Publisher</span>
-                <div className="ratio-bar">
-                  <div className="ratio-fill publisher" style={{width: '70%'}}></div>
-                </div>
-                <span className="ratio-percent">70%</span>
-              </div>
-              <div className="ratio-item">
-                <span className="ratio-label">Frontend Developer</span>
-                <div className="ratio-bar">
-                  <div className="ratio-fill developer" style={{width: '30%'}}></div>
-                </div>
-                <span className="ratio-percent">30%</span>
-              </div>
-            </div>
             <div className="hero-cta">
-              <button
+              <MagneticButton
                 className="cta-button primary"
                 onClick={() => scrollToSection('portfolio')}
               >
                 View Portfolio
-              </button>
+              </MagneticButton>
             </div>
           </Reveal>
         </section>
@@ -172,6 +160,22 @@ function App() {
         <section id="about" className="skills-section">
           <Reveal as="div" className="section-header">
             <h2 className="section-title">Skills & Technologies</h2>
+          </Reveal>
+          <Reveal as="div" className="skill-ratio">
+            <div className="ratio-item">
+              <span className="ratio-label">Web Publisher</span>
+              <div className="ratio-bar">
+                <div className="ratio-fill publisher" style={{width: '70%'}}></div>
+              </div>
+              <span className="ratio-percent">70%</span>
+            </div>
+            <div className="ratio-item">
+              <span className="ratio-label">Frontend Developer</span>
+              <div className="ratio-bar">
+                <div className="ratio-fill developer" style={{width: '30%'}}></div>
+              </div>
+              <span className="ratio-percent">30%</span>
+            </div>
           </Reveal>
           <div className="skills-grid">
             <Reveal as="div" className="skill-category primary" delay={0}>
@@ -220,8 +224,7 @@ function App() {
       <footer id="contact" className="app-footer">
         <div className="footer-content">
           <div className="footer-brand">
-            <span className="footer-logo">&lt;/&gt;</span>
-            <span className="footer-text">limssong.dev</span>
+            <span className="footer-text">limssong</span>
           </div>
           <div className="footer-links">
             <a href="https://github.com/limssong" className="footer-link">
