@@ -125,7 +125,7 @@ function App() {
       <main className="main-content">
         {/* 심플한 히어로 섹션 */}
         <section id="home" className="hero-section">
-          <Reveal as="div" className="hero-content">
+          <Reveal as="div" className="hero-content" mode="mount">
             <h2 className="hero-title">
               Web Publisher &<br />Frontend Developer.
             </h2>

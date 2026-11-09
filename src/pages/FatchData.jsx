@@ -15,7 +15,7 @@ const FetchData = () => {
   }
   useEffect(()=>{
     searchData()
-  })
+  }, [])
   
   return(
     <div>
