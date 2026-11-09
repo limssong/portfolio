@@ -16,7 +16,7 @@
   --shadow-light: 0 2px 16px rgba(0, 0, 0, 0.06);
   --shadow-dark: 0 20px 48px rgba(0, 0, 0, 0.12);
   --gradient-primary: linear-gradient(135deg, #0071e3 0%, #2997ff 100%);
-  --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', 'Roboto', sans-serif;
+  --font-sans: 'Pretendard', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', 'Roboto', sans-serif;
 
   /* 반응형 브레이크포인트 */
   --container-max-width: 1200px;
