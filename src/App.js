@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import FetchData from './pages/FatchData';
+import Reveal from './components/Reveal';
 import { initGA, trackPageView } from './ga';
 
 function App() {
@@ -124,9 +125,9 @@ function App() {
       <main className="main-content">
         {/* 심플한 히어로 섹션 */}
         <section id="home" className="hero-section">
-          <div className="hero-content">
+          <Reveal as="div" className="hero-content">
             <h2 className="hero-title">
-              Web Publisher & Frontend Developer
+              Web Publisher &<br />Frontend Developer.
             </h2>
             <p className="hero-subtitle">
               HTML5 • CSS3 • SCSS • Vue • JavaScript • React
@@ -148,40 +149,32 @@ function App() {
               </div>
             </div>
             <div className="hero-cta">
-              <button 
+              <button
                 className="cta-button primary"
                 onClick={() => scrollToSection('portfolio')}
               >
                 View Portfolio
               </button>
             </div>
-          </div>
+          </Reveal>
         </section>
 
         {/* 포트폴리오 섹션 */}
         <section id="portfolio" className="portfolio-section">
-          <div className="section-header">
-            <h2 className="section-title">
-              <span className="code-bracket">&lt;</span>
-              My Projects
-              <span className="code-bracket"> /&gt;</span>
-            </h2>
+          <Reveal as="div" className="section-header">
+            <h2 className="section-title">My Projects</h2>
             <p className="section-subtitle">A collection of my recent work</p>
-          </div>
+          </Reveal>
           <FetchData />
         </section>
 
         {/* 스킬 섹션 */}
         <section id="about" className="skills-section">
-          <div className="section-header">
-            <h2 className="section-title">
-              <span className="code-bracket">&lt;</span>
-              Skills & Technologies
-              <span className="code-bracket"> /&gt;</span>
-            </h2>
-          </div>
+          <Reveal as="div" className="section-header">
+            <h2 className="section-title">Skills & Technologies</h2>
+          </Reveal>
           <div className="skills-grid">
-            <div className="skill-category primary">
+            <Reveal as="div" className="skill-category primary" delay={0}>
               <h3 className="skill-title">Web Publishing (70%)</h3>
               <div className="skill-tags">
                 <span className="skill-tag">HTML5</span>
@@ -191,8 +184,8 @@ function App() {
                 <span className="skill-tag">Cross Browser</span>
                 <span className="skill-tag">Semantic Markup</span>
               </div>
-            </div>
-            <div className="skill-category secondary">
+            </Reveal>
+            <Reveal as="div" className="skill-category secondary" delay={80}>
               <h3 className="skill-title">Frontend Development (30%)</h3>
               <div className="skill-tags">
                 <span className="skill-tag">Vue</span>
@@ -201,8 +194,8 @@ function App() {
                 <span className="skill-tag">jQuery</span>
                 <span className="skill-tag">Angular</span>
               </div>
-            </div>
-            <div className="skill-category">
+            </Reveal>
+            <Reveal as="div" className="skill-category" delay={160}>
               <h3 className="skill-title">Tools & Others</h3>
               <div className="skill-tags">
                 <span className="skill-tag">Cursor</span>
@@ -218,7 +211,7 @@ function App() {
                 <span className="skill-tag">Confluence</span>
                 <span className="skill-tag">Notion</span>
               </div>
-            </div>
+            </Reveal>
           </div>
         </section>
       </main>
@@ -232,10 +225,10 @@ function App() {
           </div>
           <div className="footer-links">
             <a href="https://github.com/limssong" className="footer-link">
-              <span className="link-icon">📱</span> GitHub
+              GitHub
             </a>
             <a href="mailto:limssong0411@gmail.com" className="footer-link">
-              <span className="link-icon">📧</span> Email
+              Email
             </a>
           </div>
         </div>
